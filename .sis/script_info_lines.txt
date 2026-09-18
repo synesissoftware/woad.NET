@@ -1,0 +1,2 @@
+woad.NET provides minimal ANSI terminal colour codes for .NET
+Copyright (c) 2026, Matthew Wilson and Synesis Information Systems
