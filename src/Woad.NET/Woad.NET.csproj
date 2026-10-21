@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(NetLibVersion);$(NetStandardLibVersion)</TargetFrameworks>
+    <RootNamespace>Woad</RootNamespace>
+    <AssemblyName>Woad</AssemblyName>
+
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <PackageId>Woad</PackageId>
+    <Title>woad.NET</Title>
+    <Description>Minimal ANSI terminal colour codes for .NET</Description>
+    <PackageTags>ansi;colour;color;sgr;terminal;tty;console;dotnet;Synesis</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/synesissoftware/woad.NET</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/synesissoftware/woad.NET/blob/master/CHANGES.md</PackageReleaseNotes>
+
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
