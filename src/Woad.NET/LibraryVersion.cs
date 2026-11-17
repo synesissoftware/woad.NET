@@ -1,5 +1,5 @@
 // Created: 9th September 2026
-// Updated: 16th November 2026
+// Updated: 17th November 2026
 
 namespace Woad;
 
@@ -12,14 +12,17 @@ public static class LibraryVersion
     public const int Major = 0;
 
     /// <summary>Minor version component.</summary>
-    public const int Minor = 0;
+    public const int Minor = 1;
 
     /// <summary>Patch version component.</summary>
-    public const int Patch = 1;
+    public const int Patch = 0;
+
+    /// <summary>Prerelease label, without a leading hyphen.</summary>
+    public const string PreRelease = "alpha1";
 
     /// <summary>
     ///  Human-readable version string matching
-    ///  <see cref="Major"/>.<see cref="Minor"/>.<see cref="Patch"/>.
+    ///  <see cref="Major"/>.<see cref="Minor"/>.<see cref="Patch"/>-<see cref="PreRelease"/>.
     /// </summary>
-    public static string VersionString => $"{Major}.{Minor}.{Patch}";
+    public static string VersionString => $"{Major}.{Minor}.{Patch}-{PreRelease}";
 }

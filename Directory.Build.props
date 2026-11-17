@@ -11,7 +11,8 @@
     <Product>woad.NET</Product>
     <Authors>Matt Wilson</Authors>
     <Copyright>Copyright © 2026 Matthew Wilson and Synesis Information Systems</Copyright>
-    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>alpha1</VersionSuffix>
 
     <RepositoryUrl>https://github.com/synesissoftware/woad.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

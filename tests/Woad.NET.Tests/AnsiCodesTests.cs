@@ -9,6 +9,8 @@ public sealed class AnsiCodesTests
     private static readonly string[] AllCodes =
     [
         AnsiCodes.Reset,
+        AnsiCodes.Blinking,
+        AnsiCodes.Bold,
         AnsiCodes.FgBlack,
         AnsiCodes.FgRed,
         AnsiCodes.FgGreen,
@@ -48,6 +50,20 @@ public sealed class AnsiCodesTests
     {
         Assert.Equal("\x1b[0m", AnsiCodes.Reset);
         Assert.Equal(AnsiCodes.Reset, AnsiCodes.RESET);
+    }
+
+    [Fact]
+    public void Bold_is_escape_bracket_1_m()
+    {
+        Assert.Equal("\x1b[1m", AnsiCodes.Bold);
+        Assert.Equal(AnsiCodes.Bold, AnsiCodes.BOLD);
+    }
+
+    [Fact]
+    public void Blinking_is_escape_bracket_5_m()
+    {
+        Assert.Equal("\x1b[5m", AnsiCodes.Blinking);
+        Assert.Equal(AnsiCodes.Blinking, AnsiCodes.BLINKING);
     }
 
     [Fact]
