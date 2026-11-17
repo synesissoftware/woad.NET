@@ -1,5 +1,5 @@
 // Created: 9th September 2026
-// Updated: 9th September 2026
+// Updated: 17th November 2026
 
 namespace Woad;
 
@@ -12,6 +12,14 @@ public static class AnsiCodes
 
     /// <summary>Reset all attributes.</summary>
     public const string Reset = "\x1b[0m";
+
+    // Attributes
+
+    /// <summary>Blinking text (SGR 5).</summary>
+    public const string Blinking = "\x1b[5m";
+
+    /// <summary>Bold text (SGR 1).</summary>
+    public const string Bold = "\x1b[1m";
 
     // Foreground (standard)
 
@@ -121,6 +129,12 @@ public static class AnsiCodes
 
     /// <summary>Reset all attributes (alias for <see cref="Reset"/>).</summary>
     public const string RESET = Reset;
+
+    /// <summary>Blinking text (alias for <see cref="Blinking"/>).</summary>
+    public const string BLINKING = Blinking;
+
+    /// <summary>Bold text (alias for <see cref="Bold"/>).</summary>
+    public const string BOLD = Bold;
 
     /// <summary>Foreground black (alias for <see cref="FgBlack"/>).</summary>
     public const string FG_BLACK = FgBlack;

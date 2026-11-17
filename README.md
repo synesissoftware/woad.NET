@@ -14,6 +14,7 @@ Minimal ANSI terminal colour codes, for .NET
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
+- [Developer Experience](#developer-experience)
 - [Installation](#installation)
 - [Quick start](#quick-start)
 - [Components](#components)
@@ -40,7 +41,33 @@ for library authors. It is not a console or TUI framework.
 
 This repository ships an SDK-style multi-target library (`net8.0`,
 `netstandard2.0`) with CI and NuGet packaging. It has **no runtime
-dependencies** on any non-framework library.
+dependencies** on any non-framework library. The package is not published
+to NuGet.
+
+
+## Developer Experience
+
+The .NET SDK named in **global.json** is enough. From a checkout:
+
+```bash
+dotnet test woad.NET.sln
+dotnet run --project samples/Woad.NET.QuickStart
+```
+
+A sequence is emitted only when the writer supports colour:
+
+```csharp
+using Woad;
+
+string green = Colour.SeqFor(Console.Out, AnsiCodes.FgGreen);
+string reset = Colour.SeqFor(Console.Out, AnsiCodes.Reset);
+
+Console.WriteLine($"{green}ok{reset}");
+```
+
+See [INSTALL.md](./INSTALL.md) for restore and pack, and
+[`samples/Woad.NET.QuickStart`](./samples/Woad.NET.QuickStart) for the
+same program. Windows virtual-terminal gating is not in **0.1.0-alpha1**.
 
 
 ## Installation
@@ -54,6 +81,10 @@ See [INSTALL.md](./INSTALL.md) for source checkout restore, build, and test.
 
 ## Quick start
 
+The conditional program in **Developer Experience** is the shortest use.
+Fixed sequences are also available on their own, for a caller that has
+already decided to emit colour:
+
 ```csharp
 using Woad;
 
@@ -64,16 +95,18 @@ Console.WriteLine($"{AnsiCodes.FgRed}Error!{AnsiCodes.Reset}");
 
 ## Components
 
-The **0.0.1** release provides:
+The **0.1.0-alpha1** release provides:
 
 * **`AnsiCodes`** — ANSI SGR escape sequences:
   * Reset (`Reset` / `RESET`);
+  * Bold (`Bold` / `BOLD`) and blinking (`Blinking` / `BLINKING`);
   * Standard foreground colours (`FgBlack`, `FgRed`, `FgGreen`, `FgYellow`, `FgBlue`, `FgMagenta`, `FgCyan`, `FgWhite`);
   * Bright foreground colours (`FgBrightBlack`, `FgBrightRed`, `FgBrightGreen`, `FgBrightYellow`, `FgBrightBlue`, `FgBrightMagenta`, `FgBrightCyan`, `FgBrightWhite`);
   * Standard background colours (`BgBlack`, `BgRed`, `BgGreen`, `BgYellow`, `BgBlue`, `BgMagenta`, `BgCyan`, `BgWhite`);
   * Bright background colours (`BgBrightBlack`, `BgBrightRed`, `BgBrightGreen`, `BgBrightYellow`, `BgBrightBlue`, `BgBrightMagenta`, `BgBrightCyan`, `BgBrightWhite`);
   * Upper-case aliases (`FG_RED`, `BG_BLUE`, etc.) matching sibling woad libraries across C, C++, Go, Python, Ruby, and Rust;
-* **`LibraryVersion`** — Major, Minor, Patch, and VersionString;
+* **`LibraryVersion`** — Major, Minor, Patch, PreRelease, and VersionString (`0.1.0-alpha1`);
+* **`Colour`** — cached policy (`ColourPolicy` returns 0, 1, or 2), `Refresh`, `SupportsColour`, and `SeqFor` on a `TextWriter`;
 
 
 ## Platform support
@@ -81,6 +114,7 @@ The **0.0.1** release provides:
 * **.NET 8.0+** (`net8.0`);
 * **.NET Standard 2.0+** (`netstandard2.0` — .NET Framework 4.6.1+, .NET Core 2.0+, Mono 5.4+);
 * Fully AOT-compatible under .NET 8.0+;
+* Unix: a console stream that is not redirected supports colour unless the policy inhibits it or `TERM` is `dumb`. Windows virtual-terminal gating and mintty recognition are not in this alpha;
 
 
 ## Repository layout

@@ -1,6 +1,13 @@
 # woad.NET - Changes <!-- omit in toc -->
 
 
+## 0.1.0-alpha1 - 17th November 2026
+
+* Added `Blinking` / `BLINKING` and `Bold` / `BOLD`;
+* Portable colour policy (`Colour.ColourPolicy`, `Colour.Refresh`, `Colour.SupportsColour`, `Colour.SeqFor`), including `TERM=dumb` and console-stream attachment;
+* Windows virtual-terminal gating and mintty recognition are not in this alpha;
+
+
 ## 0.0.1 - 16th November 2026
 
 * SDK-style cross-platform shell: multi-target library (`net8.0`, `netstandard2.0`), xUnit tests, QuickStart sample;
