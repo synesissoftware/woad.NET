@@ -1,7 +1,7 @@
 # woad.NET - Changes <!-- omit in toc -->
 
 
-## 0.0.1 - 9th September 2026
+## 0.0.1 - 16th November 2026
 
 * SDK-style cross-platform shell: multi-target library (`net8.0`, `netstandard2.0`), xUnit tests, QuickStart sample;
 * ANSI SGR colour and reset codes (`Reset`, `Fg*`, `Bg*`, bright variants, uppercase aliases);
